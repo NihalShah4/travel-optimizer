@@ -1,0 +1,6 @@
+{
+  "France": ["Paris", "Nice", "Lyon", "Marseille", "Bordeaux"],
+  "Italy": ["Rome", "Florence", "Milan", "Venice", "Naples"],
+  "United States": ["New York", "Los Angeles", "Chicago", "San Francisco", "Miami"],
+  "India": ["Mumbai", "Delhi", "Bengaluru", "Jaipur", "Goa"]
+}

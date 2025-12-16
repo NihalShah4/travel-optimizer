@@ -1,0 +1,24 @@
+services:
+  osrm:
+    image: osrm/osrm-backend:latest
+    container_name: travel_osrm
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/data/osrm:/data
+    working_dir: /data
+    command: >
+      bash -lc "
+      if [ ! -f /data/europe-latest.osm.pbf ]; then
+        echo 'Downloading OSM extract...';
+        wget -O /data/europe-latest.osm.pbf https://download.geofabrik.de/europe-latest.osm.pbf;
+      fi;
+      if [ ! -f /data/europe-latest.osrm ]; then
+        echo 'Preparing OSRM data (this can take a while the first time)...';
+        osrm-extract -p /opt/car.lua /data/europe-latest.osm.pbf;
+        osrm-partition /data/europe-latest.osrm;
+        osrm-customize /data/europe-latest.osrm;
+      fi;
+      echo 'Starting OSRM...';
+      osrm-routed --algorithm mld /data/europe-latest.osrm --port 5000
+      "

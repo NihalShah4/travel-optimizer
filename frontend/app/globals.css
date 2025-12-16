@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* A tiny bit of sensible global defaults */
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #f8fafc;
+}
