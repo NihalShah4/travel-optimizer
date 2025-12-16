@@ -1,0 +1,3 @@
+# OSRM / OSM data (too large for git)
+backend/data/osrm/
+*.osm.pbf
